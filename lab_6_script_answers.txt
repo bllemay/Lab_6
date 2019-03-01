@@ -1,0 +1,26 @@
+1. Jiahao Wang
+2. No partner
+3.
+(1)CREATE TABLE Competing_University(University_name VARCHAR(50) PRIMARY KEY, Date_Established DATE, Address VARCHAR(100), Student_population Int, accept_rate real);
+
+(2)INSERT INTO Competing_University(University_name, Date_Established, Address, Student_population, accept_rate) VALUES('CU BOULDER', to_date('1876', 'YYYY'), '1100 28th St, Boulder, CO 80303', 35000, 0.8);
+
+(3)SELECT name, major FROM football_players ORDER by major;
+
+(4)SELECT name, rushing_yards FROM football_players WHERE "rushing_yards" >= 70;
+
+(5)SELECT * FROM football_games where visitor_name = 'Nebraska';
+
+(6)SELECT * FROM football_games WHERE home_score > visitor_score;
+
+(7)SELECT visitor_name, game_date from football_games where game_date > '2018-08-01' and game_date < '2019-01-01';
+
+(8)CREATE VIEW winning_games AS SELECT count(*) AS wins FROM football_games WHERE home_score > visitor_score;
+
+(9)CREATE VIEW games_played AS SELECT count(*) AS gameCount FROM football_games;
+
+(10)SELECT CAST((wins) as float)/cast((gameCount) as float) as percentage from winning_games, games_played;
+
+(11)SELECT count(*) from football_games where (select id from football_players where name = 'Cedric Vega') = any(players);
+
+(12)SELECT (cast(football_players.rushing_yards as float) / num_games.total) from (SELECT count(*) as total from football_games where (SELECT id from football_players where name = 'Cedric Vega')= any(players)) as num_games, football_players where football_players.name = 'Cedric Vega';
